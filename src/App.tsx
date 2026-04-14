@@ -197,7 +197,11 @@ export default function App() {
 
         {/* Action Buttons */}
         <div className="flex flex-wrap gap-4 mb-12">
-          <button className="bg-blue-900 text-white px-6 py-3 rounded-lg font-bold flex items-center gap-2 hover:bg-blue-800 transition-all shadow-md active:scale-95">
+          <button className="bg-blue-900 text-white px-6 py-3 rounded-lg font-bold flex items-center gap-2 hover:bg-blue-800 transition-all shadow-md active:scale-95"
+            onClick={() => {
+    window.location.href = "https://new-item.netlify.app/";
+  }}
+            >
             <Plus size={20} />
             New Project
           </button>
