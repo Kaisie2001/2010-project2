@@ -269,7 +269,7 @@ export default function App() {
               claimStateColor="bg-red-100 text-red-700"
               completeness={82}
               image="https://picsum.photos/seed/central/800/600"
-              href="https://central-tower-level-8.netlify.app/“
+              onClick={() => {window.location.href = "https://central-tower-level-8.netlify.app/";}}
             />
             <ProjectCard 
               isDemo
