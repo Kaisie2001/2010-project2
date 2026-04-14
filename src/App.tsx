@@ -71,7 +71,7 @@ const ProjectCard = ({
     whileHover={{ y: -4 }}
     className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 flex flex-col h-full"
     onClick={() => {
-    window.location.href = c.href;
+    window.location.href = href;
   }}
   >
     {image && (
