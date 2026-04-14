@@ -163,9 +163,9 @@ export default function App() {
             <span className="text-xl font-bold tracking-tight">TraceWall-HK</span>
           </div>
           <nav className="hidden md:flex items-center gap-8">
-            <a href="#" className="text-gray-500 hover:text-gray-900 font-medium transition-colors">Home</a>
+            <a href="https://0415-landing.netlify.app/" className="text-gray-500 hover:text-gray-900 font-medium transition-colors">Home</a>
             <a href="#" className="text-gray-500 hover:text-gray-900 font-medium transition-colors">Cases</a>
-            <a href="#" className="text-blue-900 font-bold border-b-2 border-blue-900 pb-1">New Project</a>
+            <a href="https://new-item.netlify.app/#" className="text-blue-900 font-bold border-b-2 border-blue-900 pb-1">New Project</a>
             <a href="#" className="text-gray-500 hover:text-gray-900 font-medium transition-colors">Workspace</a>
           </nav>
         </div>
