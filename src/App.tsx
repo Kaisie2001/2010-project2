@@ -269,6 +269,7 @@ export default function App() {
               claimStateColor="bg-red-100 text-red-700"
               completeness={82}
               image="https://picsum.photos/seed/central/800/600"
+              href="https://central-tower-level-8.netlify.app/“
             />
             <ProjectCard 
               isDemo
@@ -280,6 +281,7 @@ export default function App() {
               claimStateColor="bg-gray-100 text-gray-700"
               completeness={68}
               image="https://picsum.photos/seed/harbour/800/600"
+              href="https://harbour-business-centre.netlify.app/"
             />
             <ProjectCard 
               isDemo
@@ -291,6 +293,7 @@ export default function App() {
               claimStateColor="bg-green-100 text-green-700"
               completeness={91}
               image="https://picsum.photos/seed/kowloon/800/600"
+              href="https://kowloon-bay.netlify.app/"
             />
           </div>
         </section>
