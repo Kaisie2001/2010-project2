@@ -37,6 +37,7 @@ interface ProjectCardProps {
   isDemo?: boolean;
   badge?: string;
   badgeColor?: string;
+  href?: string;
 }
 
 // --- Components ---
@@ -61,7 +62,8 @@ const ProjectCard = ({
   evidence,
   isDemo,
   badge,
-  badgeColor
+  badgeColor,
+  href
 }: ProjectCardProps) => (
   <motion.div 
     initial={{ opacity: 0, y: 20 }}
