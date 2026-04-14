@@ -331,14 +331,22 @@ export default function App() {
               whileHover={{ scale: 1.02 }}
               className="border-2 border-dashed border-gray-200 rounded-2xl flex flex-col items-center justify-center p-12 bg-gray-50/50 hover:bg-gray-50 transition-all cursor-pointer group"
             >
-              <div className="w-16 h-16 bg-white rounded-full shadow-sm border border-gray-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <div className="w-16 h-16 bg-white rounded-full shadow-sm border border-gray-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"
+                onClick={() => {
+    window.location.href = "https://new-item.netlify.app/";
+  }}
+                >
                 <Plus className="text-blue-900" size={32} />
               </div>
               <h3 className="text-xl font-bold mb-2">Start a new project</h3>
               <p className="text-gray-500 text-center text-sm mb-8 max-w-[200px]">
                 Initialize a fresh workspace to track and claim your circular fit-out metrics.
               </p>
-              <button className="bg-white text-gray-900 px-6 py-2 rounded-lg font-bold border border-gray-200 shadow-sm hover:bg-gray-50 transition-colors">
+              <button className="bg-white text-gray-900 px-6 py-2 rounded-lg font-bold border border-gray-200 shadow-sm hover:bg-gray-50 transition-colors"
+                onClick={() => {
+    window.location.href = "https://new-item.netlify.app/";
+  }}
+                >
                 New Project
               </button>
             </motion.div>
