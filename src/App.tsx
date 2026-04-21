@@ -30,7 +30,7 @@ type ActiveView =
   | 'harbour'
   | 'kowloon';
 
-type ActiveNav = 'home' | 'projects' | 'new-project' | 'cases';
+type ActiveNav = 'home' | 'projects' | 'new-project';
 
 interface ProjectCardProps {
   title: string;
@@ -274,29 +274,27 @@ export default function App() {
 
   const demoCasesRef = useRef<HTMLElement | null>(null);
 
-  const showProjects = (nav: ActiveNav = 'projects') => {
+  const showProjects = () => {
     setActiveView('projects');
+    setActiveNav('projects');
+  };
+
+  const openEmbeddedView = (
+    view: ActiveView,
+    nav: ActiveNav = 'projects'
+  ) => {
+    setActiveView(view);
     setActiveNav(nav);
   };
 
-  const showCasesSection = () => {
-    setActiveView('projects');
-    setActiveNav('cases');
-
+  const scrollToDemoCases = () => {
+    showProjects();
     requestAnimationFrame(() => {
       demoCasesRef.current?.scrollIntoView({
         behavior: 'smooth',
         block: 'start',
       });
     });
-  };
-
-  const openEmbeddedView = (
-    view: ActiveView,
-    nav: ActiveNav = 'cases'
-  ) => {
-    setActiveView(view);
-    setActiveNav(nav);
   };
 
   const renderEmbeddedContent = () => {
@@ -306,7 +304,7 @@ export default function App() {
           <EmbeddedPage
             title="Home"
             src="https://tracewall-landing-page.netlify.app/"
-            onBack={() => showProjects('projects')}
+            onBack={showProjects}
           />
         );
       case 'new-project':
@@ -314,7 +312,7 @@ export default function App() {
           <EmbeddedPage
             title="New Project"
             src="https://new-item.netlify.app/"
-            onBack={() => showProjects('projects')}
+            onBack={showProjects}
           />
         );
       case 'central':
@@ -322,7 +320,7 @@ export default function App() {
           <EmbeddedPage
             title="Central Tower – Level 18 Tenant Reinstatement"
             src="https://central-tower-level-8.netlify.app/"
-            onBack={() => showProjects('cases')}
+            onBack={showProjects}
           />
         );
       case 'harbour':
@@ -330,7 +328,7 @@ export default function App() {
           <EmbeddedPage
             title="Harbour Business Centre – Low-Carbon Fit-out Upgrade"
             src="https://harbour-business-centre.netlify.app/"
-            onBack={() => showProjects('cases')}
+            onBack={showProjects}
           />
         );
       case 'kowloon':
@@ -338,7 +336,7 @@ export default function App() {
           <EmbeddedPage
             title="Kowloon Bay Flex Office – Decommissioning Pilot"
             src="https://kowloon-bay.netlify.app/"
-            onBack={() => showProjects('cases')}
+            onBack={showProjects}
           />
         );
       default:
@@ -370,17 +368,12 @@ export default function App() {
             <NavButton
               label="Projects"
               active={activeNav === 'projects'}
-              onClick={() => showProjects('projects')}
+              onClick={showProjects}
             />
             <NavButton
               label="New Project"
               active={activeNav === 'new-project'}
               onClick={() => openEmbeddedView('new-project', 'new-project')}
-            />
-            <NavButton
-              label="Cases"
-              active={activeNav === 'cases'}
-              onClick={showCasesSection}
             />
           </nav>
         </div>
@@ -484,9 +477,18 @@ export default function App() {
 
             {/* Demo Cases Section */}
             <section className="mb-16" ref={demoCasesRef}>
-              <div className="flex items-center gap-3 mb-8">
-                <Sparkles className="text-blue-900" size={24} />
-                <h2 className="text-2xl font-bold tracking-tight">Demo Cases</h2>
+              <div className="flex items-center justify-between mb-8">
+                <div className="flex items-center gap-3">
+                  <Sparkles className="text-blue-900" size={24} />
+                  <h2 className="text-2xl font-bold tracking-tight">Demo Cases</h2>
+                </div>
+
+                <button
+                  onClick={scrollToDemoCases}
+                  className="text-sm font-medium text-blue-900 hover:underline"
+                >
+                  View demo cases
+                </button>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -500,7 +502,7 @@ export default function App() {
                   claimStateColor="bg-red-100 text-red-700"
                   completeness={82}
                   image="https://picsum.photos/seed/central/800/600"
-                  onOpen={() => openEmbeddedView('central', 'cases')}
+                  onOpen={() => openEmbeddedView('central')}
                 />
 
                 <ProjectCard
@@ -513,7 +515,7 @@ export default function App() {
                   claimStateColor="bg-gray-100 text-gray-700"
                   completeness={68}
                   image="https://picsum.photos/seed/harbour/800/600"
-                  onOpen={() => openEmbeddedView('harbour', 'cases')}
+                  onOpen={() => openEmbeddedView('harbour')}
                 />
 
                 <ProjectCard
@@ -526,7 +528,7 @@ export default function App() {
                   claimStateColor="bg-green-100 text-green-700"
                   completeness={91}
                   image="https://picsum.photos/seed/kowloon/800/600"
-                  onOpen={() => openEmbeddedView('kowloon', 'cases')}
+                  onOpen={() => openEmbeddedView('kowloon')}
                 />
               </div>
             </section>
@@ -565,7 +567,6 @@ export default function App() {
                   badgeColor="bg-green-100 text-green-700"
                 />
 
-                {/* Start New Project Card */}
                 <motion.div
                   whileHover={{ scale: 1.02 }}
                   className="border-2 border-dashed border-gray-200 rounded-2xl flex flex-col items-center justify-center p-12 bg-gray-50/50 hover:bg-gray-50 transition-all cursor-pointer group"
